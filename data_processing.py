@@ -10,8 +10,8 @@ from concurrent.futures import ThreadPoolExecutor
 
 
 
-DATA_PATH = "data"
-CHROMA_PATH = "chroma"
+DATA_PATH = "data" #File path of pdfs
+CHROMA_PATH = "chroma" #File path of local chromadb
 
 def main():
 
@@ -34,7 +34,7 @@ def load_documents():
     return document_loader.load()
 
 '''documents = load_documents()
-print(documents[0])'''
+print(documents[0])''' #Run to check if the document is loaded properly
 
 
 def split_documents(documents: list[Document]):
@@ -49,7 +49,7 @@ def split_documents(documents: list[Document]):
 
 '''documents = load_documents()
 chunks = split_documents(documents)
-print(chunks[0])'''
+print(chunks[0])''' #Run to check if the chunk is loaded properly
 
 
 def calculate_chunk_ids(chunks):
@@ -118,13 +118,14 @@ def add_to_chroma(chunks: list[Document]):
     else:
         print("✅ No new documents to add")
         
-
+#Clear database automation
 def clear_database():
     if os.path.exists(CHROMA_PATH):
         shutil.rmtree(CHROMA_PATH)
         import streamlit as st
     st.session_state.documents_processed = False 
-        
+
+#Parallel processing for streamlit application      
 def load_and_process_documents(pdf_path):
     with ThreadPoolExecutor() as executor:
         documents = list(executor.map(load_documents))
