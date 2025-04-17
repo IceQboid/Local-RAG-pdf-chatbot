@@ -19,7 +19,13 @@ Technical Workflow:
 
 Prerequisites :  Python 3.8+ ,Minimum 12GB RAM and 4GB VRAM for local model inference.
 
-Required Python libraries:  pip install -r requirements.txt
+Required Python libraries:  pip install -r requirements.
+
+Adjust Document reader according to Langchain documentation 
+
+pip install -U langchain_ollama if you want to host locally using Ollama
+
+pip install -qU chromadb langchain-chroma to install chroma extension
 
 Clone the Repository
 

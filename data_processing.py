@@ -1,7 +1,7 @@
-from langchain_community.document_loaders import PyPDFDirectoryLoader
+from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_core.documents import Document
-from langchain_chroma import Chroma
+from langchain.vectorstores.chroma import Chroma
 from embed_function import text_embed
 import argparse
 import os
@@ -30,7 +30,7 @@ def main():
 
 
 def load_documents():
-    document_loader= PyPDFDirectoryLoader(DATA_PATH)
+    document_loader= PyPDFLoader(DATA_PATH)
     return document_loader.load()
 
 '''documents = load_documents()
